@@ -9,9 +9,9 @@ import BuyMeACoffe from "@/components/BuyMeACoffe";
 
 const HomePage: React.FC = () => {
   return (
-    <main className="bg-primary h-screen">
+    <main className="flex flex-col bg-primary h-screen justify-between">
       <NavBar />
-      <div className="flex flex-col justify-center items-center gap-[1em]">
+      <div className="flex flex-col justify-between items-center gap-[1em]">
         <Image
           src={profileImg}
           alt="profile-picture"
@@ -20,15 +20,18 @@ const HomePage: React.FC = () => {
         />
         <h1 className="text-second font-bold text-3xl">Anderson Reges</h1>
         <h1 className="text-second font-bold text-2xl">Full Stack Web Developer and Technology Enthusiast</h1>
-        <div className="flex gap-[1em]">
-          <FaGithub className='text-second' size="32px" />
-          <FaLinkedin className='text-second' size="32px" />
-          <IoLogoDiscord className='text-second' size="32px" />
-          <MdAlternateEmail className='text-second' size="32px" />
-          <FaCoffee className='text-second' size="32px" />
-          <RiWhatsappFill className='text-second' size="32px" />
+        <div className="flex gap-[2em]">
+          <FaGithub className='transition text-second hover:text-third hover:scale-110' size="32px" />
+          <FaLinkedin className='transition text-second hover:text-third hover:scale-110' size="32px" />
+          <IoLogoDiscord className='transition text-second hover:text-third hover:scale-110' size="32px" />
+          <MdAlternateEmail className='transition text-second hover:text-third hover:scale-110' size="32px" />
+          <FaCoffee className='transition text-second hover:text-third hover:scale-110' size="32px" />
+          <RiWhatsappFill className='transition text-second hover:text-third hover:scale-110' size="32px" />
         </div>
-        <BuyMeACoffe />
+          <BuyMeACoffe />
+      </div>
+      <div className="flex justify-center h-[80px] items-center">
+        <p className="text-second font-extralight">© 2022 - 2023 Anderson Reges · </p>
       </div>
     </main>
   );
