@@ -1,4 +1,5 @@
 import { EB_Garamond } from 'next/font/google';
+import Link from 'next/link';
 
 const inter = EB_Garamond({
   subsets: ['latin'],
@@ -13,10 +14,18 @@ const NavBar: React.FC = () => {
         className='flex gap-[3em] items-center w-[50%] justify-center
         font-bold text-second'
       >
-        <li className='transition hover:text-third hover:scale-105'>About</li>
-        <li className='transition hover:text-third hover:scale-105'>Projects</li>
-        <li className='transition hover:text-third hover:scale-105'>Resume</li>
-        <li className='transition hover:text-third hover:scale-105'>Contact</li>
+        <Link href="/about">
+          <li className='transition hover:text-third hover:scale-105'>About</li>
+        </Link>
+        <Link href="/projects">
+          <li className='transition hover:text-third hover:scale-105'>Projects</li>
+        </Link>
+        <Link href="/resume">
+          <li className='transition hover:text-third hover:scale-105'>Resume</li>
+        </Link>
+        <Link href="/contact">
+          <li className='transition hover:text-third hover:scale-105'>Contact</li>
+        </Link>
       </ul>
     </div>
   );
