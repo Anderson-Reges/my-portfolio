@@ -1,11 +1,12 @@
 import Image from "next/image";
-import profileImg from '@/public/1690833020210.jpg'
+import Link from "next/link";
+import profileImg from '@/public/profile.jpg'
 import NavBar from "@/components/Navbar";
 import { FaGithub, FaLinkedin, FaCoffee } from 'react-icons/fa';
-import { IoLogoDiscord } from 'react-icons/io5'
 import { MdAlternateEmail } from 'react-icons/md';
 import { RiWhatsappFill } from 'react-icons/ri';
 import BuyMeACoffe from "@/components/BuyMeACoffe";
+import DiscordHover from "@/components/DiscordHover";
 
 const HomePage: React.FC = () => {
   return (
@@ -20,13 +21,23 @@ const HomePage: React.FC = () => {
         />
         <h1 className="text-second font-bold text-3xl">Anderson Reges</h1>
         <h1 className="text-second font-bold text-2xl">Full Stack Web Developer and Technology Enthusiast</h1>
-        <div className="flex gap-[2em]">
-          <FaGithub className='transition text-second hover:text-third hover:scale-110' size="32px" />
-          <FaLinkedin className='transition text-second hover:text-third hover:scale-110' size="32px" />
-          <IoLogoDiscord className='transition text-second hover:text-third hover:scale-110' size="32px" />
-          <MdAlternateEmail className='transition text-second hover:text-third hover:scale-110' size="32px" />
-          <FaCoffee className='transition text-second hover:text-third hover:scale-110' size="32px" />
-          <RiWhatsappFill className='transition text-second hover:text-third hover:scale-110' size="32px" />
+        <div className="flex gap-[2.3em] h-[48px] w-[40%] justify-center">
+          <Link href="https://github.com/Anderson-Reges">
+            <FaGithub className='transition text-second hover:text-third hover:scale-110' size="32px" />
+          </Link>
+          <Link href="https://www.linkedin.com/in/anderson-reges/">
+            <FaLinkedin className='transition text-second hover:text-third hover:scale-110' size="32px" />
+          </Link>
+          <DiscordHover />
+          <Link href="mailto:andersonreges76@gmail.com">
+            <MdAlternateEmail className='transition text-second hover:text-third hover:scale-110' size="32px" />
+          </Link>
+          <Link href="https://www.buymeacoffee.com/andersonreges">
+            <FaCoffee className='transition text-second hover:text-third hover:scale-110' size="32px" />
+          </Link>
+          <Link href="https://wa.me/5588993408548">
+            <RiWhatsappFill className='transition text-second hover:text-third hover:scale-110' size="32px" />
+          </Link>
         </div>
           <BuyMeACoffe />
       </div>
