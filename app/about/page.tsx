@@ -47,27 +47,90 @@ const about: React.FC = () => {
             </p>
             <h1 className="text-second text-4xl font-bold mt-[64px] mb-[32px]">Stuff I Work On</h1>
             <div className="inline-grid grid-cols-7 gap-[2em] w-full">
-              <BiLogoGit className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <FaGithub className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <RiJavascriptFill className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <BiLogoTypescript className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <AiFillHtml5 className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <BiLogoCss3 className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <DiSass className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <BiLogoTailwindCss className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <BiLogoReact className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <TbBrandRedux className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <SiNodedotjs className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <SiExpress className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <SiSequelize className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <BiLogoPython className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <SiMysql className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <SiMongodb className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <SiJest className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <SiTestinglibrary className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <SiPytest className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <SiMocha className='transition text-second hover:text-third hover:scale-110' size="45px" />
-              <FaDocker className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <BiLogoGit className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">Git</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <FaGithub className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">Git</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <RiJavascriptFill className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">JavaScript</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <BiLogoTypescript className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">TypeScript</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <AiFillHtml5 className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">HTML5</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <BiLogoCss3 className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">CSS3</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <DiSass className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">Sass</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <BiLogoTailwindCss className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">TailwindCSS</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <BiLogoReact className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">React</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <TbBrandRedux className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">Redux</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <SiNodedotjs className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">Node.js</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <SiExpress className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">Express.js</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <SiSequelize className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">Python</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <BiLogoPython className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">Express.js</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <SiMysql className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">MySQL</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <SiMongodb className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">MongoDB</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <SiJest className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">Jest</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <SiTestinglibrary className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second text-center">Testing Library</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <SiPytest className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">PyTest</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <SiMocha className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">Mocha.js</p>
+              </div>
+              <div className="flex flex-col items-center gap-[0.5em]">
+                <FaDocker className='transition text-second hover:text-third hover:scale-110' size="45px" />
+                <p className="text-second">Docker</p>
+              </div>
             </div>
           </article>
         </section>
