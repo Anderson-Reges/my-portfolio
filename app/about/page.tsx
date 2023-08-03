@@ -1,5 +1,18 @@
 import NavBar from "@/components/Navbar";
-import { BiLogoGit } from 'react-icons/bi'
+import {
+  BiLogoGit, BiLogoTypescript, BiLogoCss3, BiLogoTailwindCss, BiLogoReact, BiLogoPython
+} from 'react-icons/bi';
+import { FaGithub, FaDocker } from 'react-icons/fa';
+import { RiJavascriptFill } from 'react-icons/ri';
+import { AiFillHtml5 } from 'react-icons/ai';
+import { DiSass } from 'react-icons/di';
+import { TbBrandRedux } from 'react-icons/tb';
+import {
+  SiNodedotjs, SiExpress, SiSequelize,
+  SiMysql, SiMongodb, SiJest, SiPytest, SiMocha,
+  SiTestinglibrary
+} from 'react-icons/si';
+import Footer from "@/components/footer";
 
 const about: React.FC = () => {
   return (
@@ -33,12 +46,33 @@ const about: React.FC = () => {
               process. I have 1 year and 3 months of practical experience in software development and with some projects on Github.
             </p>
             <h1 className="text-second text-4xl font-bold mt-[64px] mb-[32px]">Stuff I Work On</h1>
-            <div className="grid">
-              
+            <div className="inline-grid grid-cols-7 gap-[2em] w-full">
+              <BiLogoGit className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <FaGithub className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <RiJavascriptFill className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <BiLogoTypescript className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <AiFillHtml5 className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <BiLogoCss3 className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <DiSass className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <BiLogoTailwindCss className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <BiLogoReact className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <TbBrandRedux className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <SiNodedotjs className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <SiExpress className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <SiSequelize className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <BiLogoPython className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <SiMysql className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <SiMongodb className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <SiJest className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <SiTestinglibrary className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <SiPytest className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <SiMocha className='transition text-second hover:text-third hover:scale-110' size="45px" />
+              <FaDocker className='transition text-second hover:text-third hover:scale-110' size="45px" />
             </div>
           </article>
         </section>
       </div>
+      <Footer />
     </>
   );
 }

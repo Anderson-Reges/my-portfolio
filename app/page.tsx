@@ -7,6 +7,7 @@ import { MdAlternateEmail } from 'react-icons/md';
 import { RiWhatsappFill } from 'react-icons/ri';
 import BuyMeACoffe from "@/components/BuyMeACoffe";
 import DiscordHover from "@/components/DiscordHover";
+import Footer from "@/components/footer";
 
 const HomePage: React.FC = () => {
   return (
@@ -41,9 +42,7 @@ const HomePage: React.FC = () => {
         </div>
           <BuyMeACoffe />
       </div>
-      <div className="flex justify-center h-[80px] items-center">
-        <p className="text-second font-extralight">© 2022 - 2023 Anderson Reges · </p>
-      </div>
+      <Footer />
     </main>
   );
 }
