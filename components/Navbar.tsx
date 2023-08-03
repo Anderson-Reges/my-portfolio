@@ -9,7 +9,11 @@ const inter = EB_Garamond({
 const NavBar: React.FC = () => {
   return (
     <div className='flex justify-around py-[1.2em]'>
-      <h1 className={`text-4xl ${inter.className} w-[50%] text-center text-second`}>A.R</h1>
+      <h1 className={`text-4xl ${inter.className} w-[50%] text-center text-second hover:text-third`}>
+        <Link href="/">
+          A.R
+        </Link>
+      </h1>
       <ul
         className='flex gap-[3em] items-center w-[50%] justify-center
         font-bold text-second'
