@@ -4,7 +4,7 @@ import './globals.css'
 
 const inter = Lato({
   subsets: ['latin'],
-  weight: ['700'],
+  weight: ['400'],
 });
 
 export const metadata: Metadata = {
