@@ -132,6 +132,16 @@ const about: React.FC = () => {
                 <p className="text-second">Docker</p>
               </div>
             </div>
+            <h1 className="text-second text-4xl font-bold mt-[64px] mb-[32px]">Thanks</h1>
+            <p className="text-second text-lg my-[1.112em]">
+              I always love feedback, so if you want to chat, need help with your projects, feel free to contact me.
+            </p>
+            <p className="text-second text-lg my-[1.112em]">
+              Thanks for reading!
+            </p>
+            <p className="text-second text-lg my-[1.112em]">
+              Follow on LinkedIn
+            </p>
           </article>
         </section>
       </div>

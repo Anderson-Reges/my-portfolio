@@ -5,7 +5,6 @@ import NavBar from "@/components/Navbar";
 import { FaGithub, FaLinkedin, FaCoffee } from 'react-icons/fa';
 import { MdAlternateEmail } from 'react-icons/md';
 import { RiWhatsappFill } from 'react-icons/ri';
-import BuyMeACoffe from "@/components/BuyMeACoffe";
 import DiscordHover from "@/components/DiscordHover";
 import Footer from "@/components/footer";
 
@@ -40,7 +39,6 @@ const HomePage: React.FC = () => {
             <RiWhatsappFill className='transition text-second hover:text-third hover:scale-110' size="32px" />
           </Link>
         </div>
-          <BuyMeACoffe />
       </div>
       <Footer />
     </main>
