@@ -53,7 +53,7 @@ const about: React.FC = () => {
               </div>
               <div className="flex flex-col items-center gap-[0.5em]">
                 <FaGithub className='transition text-second hover:text-third hover:scale-110' size="45px" />
-                <p className="text-second">Git</p>
+                <p className="text-second">Github</p>
               </div>
               <div className="flex flex-col items-center gap-[0.5em]">
                 <RiJavascriptFill className='transition text-second hover:text-third hover:scale-110' size="45px" />
@@ -97,11 +97,11 @@ const about: React.FC = () => {
               </div>
               <div className="flex flex-col items-center gap-[0.5em]">
                 <SiSequelize className='transition text-second hover:text-third hover:scale-110' size="45px" />
-                <p className="text-second">Python</p>
+                <p className="text-second">Sequelize</p>
               </div>
               <div className="flex flex-col items-center gap-[0.5em]">
                 <BiLogoPython className='transition text-second hover:text-third hover:scale-110' size="45px" />
-                <p className="text-second">Express.js</p>
+                <p className="text-second">Python</p>
               </div>
               <div className="flex flex-col items-center gap-[0.5em]">
                 <SiMysql className='transition text-second hover:text-third hover:scale-110' size="45px" />
