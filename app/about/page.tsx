@@ -12,7 +12,7 @@ import {
   SiMysql, SiMongodb, SiJest, SiPytest, SiMocha,
   SiTestinglibrary
 } from 'react-icons/si';
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 
 const about: React.FC = () => {
   return (
@@ -43,7 +43,7 @@ const about: React.FC = () => {
             <p className="text-second text-lg my-[1.112em]">
               I recently made a career transition, but I was lucky enough to have
               a mentor friend who guided me in this
-              process. I have 1 year and 3 months of practical experience in software development and with some projects on Github.
+              process. I have 1 year and 4 months of practical experience in software development and with some projects on Github.
             </p>
             <h1 className="text-second text-4xl font-bold mt-[64px] mb-[32px]">Stuff I Work On</h1>
             <div className="inline-grid grid-cols-7 gap-[2em] w-full">
