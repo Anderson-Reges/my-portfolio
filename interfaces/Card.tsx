@@ -1,5 +1,7 @@
+import { StaticImageData } from "next/image";
+
 export default interface ICard {
-  thumb: string,
+  thumb: StaticImageData,
   name: string,
   stacks: Array<string>
 }

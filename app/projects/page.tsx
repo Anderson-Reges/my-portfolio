@@ -10,13 +10,13 @@ const projects: React.FC = () => {
         className="mt-[16px]"
       >
         <section
-          className="mx-[225px] pl-[2rem] pr-[2rem]"
+          className="mx-[100px] pl-[2rem] pr-[2rem]"
         >
           <article>
-            <header>
+            <header className="mx-[225px]">
               <h1 className="text-4xl font-bold">Projects</h1>
             </header>
-            <p className="text-lg my-[1.112em]">
+            <p className="text-lg my-[1.112em] mx-[225px]">
               These are some projects that I developed or are still developing.
             </p>
             <ProjectCards />
