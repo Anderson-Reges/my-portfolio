@@ -1,9 +1,10 @@
 import Card from "./Card";
 import seaImg from '@/public/Sea_dot_page.png';
+import ProjectDetails from "./ProjectDetails";
 
 const ProjectCards: React.FC = () => {
   return (
-    <div className="inline-grid grid-cols-3 gap-[2em] mx-[5em]">
+    <div className="relative inline-grid grid-cols-3 gap-[2em] mx-[5em]">
       <Card
         thumb={seaImg}
         name="landing-page-product"
@@ -29,6 +30,7 @@ const ProjectCards: React.FC = () => {
         name="inventory-report"
         stacks={['React']}
       />
+      <ProjectDetails />
     </div>
   );
 }
