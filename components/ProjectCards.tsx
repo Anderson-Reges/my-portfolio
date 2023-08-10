@@ -1,36 +1,34 @@
 import Card from "./Card";
 import seaImg from '@/public/Sea_dot_page.png';
-import ProjectDetails from "./ProjectDetails";
+import React from 'react';
 
 const ProjectCards: React.FC = () => {
   return (
     <div className="relative inline-grid grid-cols-3 gap-[2em] mx-[5em]">
       <Card
-        thumb={seaImg}
         name="landing-page-product"
-        stacks={['React']}
       />
       <Card
-        thumb={seaImg}
         name="delivery-app-gastrobar"
-        stacks={['React']}
       />
       <Card
-        thumb={seaImg}
         name="blog-api"
-        stacks={['React']}
       />
       <Card
-        thumb={seaImg}
         name="trybesmith"
-        stacks={['React']}
       />
       <Card
-        thumb={seaImg}
         name="inventory-report"
-        stacks={['React']}
       />
-      <ProjectDetails />
+      <Card
+        name="trybe-futebol-clube"
+      />
+      <Card
+        name="react-testing"
+      />
+      <Card
+        name="initialization-script"
+      />
     </div>
   );
 }

@@ -3,17 +3,16 @@
 import ICard from "@/interfaces/Card";
 import IProjectDetails from "@/interfaces/ProjectDetails";
 import { Octokit } from "@octokit/core";
-import Image from "next/image";
 import { BiTime } from 'react-icons/bi'
 import React from 'react';
+import Link from "next/link";
 import { Tooltip } from 'flowbite-react';
-import { DetailsContext } from "@/context/ProjectDetails.context";
+import { FaGithub } from 'react-icons/fa';
 
-const Card: React.FC<ICard> = ({thumb, name, stacks}) => {
+const Card: React.FC<ICard> = ({ name }) => {
   const [projectDetails, setProjectDetails] = React.useState<IProjectDetails>({} as IProjectDetails);
-  const { repo, setRepo } = React.useContext(DetailsContext);
 
-  const getProjectDetails = async () => {
+  const getProjectDetails = async (): Promise<void> => {
     const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
     const { data } = await octokit.request('GET /repos/{owner}/{repo}', {
@@ -33,9 +32,9 @@ const Card: React.FC<ICard> = ({thumb, name, stacks}) => {
       topics: data.topics,
       updated_at: `${updatedDate.getMonth()}/${updatedDate.getDay()}/${updatedDate.getFullYear()}`,
       created_at: `${createdDate.getMonth()}/${createdDate.getDay()}/${createdDate.getFullYear()}`,
-      url: data.url
+      url: data.html_url
     })
-  }
+  };
 
   React.useEffect(() => {
     getProjectDetails();
@@ -48,27 +47,29 @@ const Card: React.FC<ICard> = ({thumb, name, stacks}) => {
       rounded-lg hover:scale-105 transition hover:border-third
       h-[200px]"
     >
-      <div className="flex w-[5em] items-center">
-        <Image
-          src={thumb}
-          alt="sea_dot_image"
-        />
-      </div>
-      <div className="flex flex-col gap-[.5em]">
-        <h1>{projectDetails.name}</h1>
-        <p className="text-xs">{(projectDetails.size / 1024).toFixed(2) + "MB"}</p>
+      <div className="flex flex-col gap-[.5em] w-full">
+        <div className="flex justify-between">
+          <div className="flex flex-col gap-[.5em]">
+            <h1>{projectDetails.name}</h1>
+            <p className="text-xs">{(projectDetails.size / 1024).toFixed(2) + "MB"}</p>
+          </div>
+          <div className="flex items-center">
+            <Link href={`${projectDetails.url}`}>
+              <FaGithub className='transition text-second hover:text-third hover:scale-110' size="32px" />
+            </Link>
+          </div>
+        </div>
         <div className="flex gap-1">
           <Tooltip content="Last Updates" className="text-second bg-primary px-1 transition border">
             <BiTime />
           </Tooltip>
           <p>{projectDetails.updated_at}</p>
         </div>
-        <div className="inline-grid grid-cols-3 gap-[0.5em]">
+        <div className="inline-grid grid-cols-4 gap-[0.5em]">
           {projectDetails.topics && projectDetails.topics.map((stack) => (
             <p className="bg-[#27aa7a] text-xs w-[5em] text-center rounded">{stack}</p>
           ))}
         </div>
-        <button>➜ details</button>
       </div>
     </div>
   );
