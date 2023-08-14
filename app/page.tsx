@@ -6,7 +6,7 @@ import { FaGithub, FaLinkedin, FaCoffee } from 'react-icons/fa';
 import { MdAlternateEmail } from 'react-icons/md';
 import { RiWhatsappFill } from 'react-icons/ri';
 import DiscordHover from "@/components/DiscordHover";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 
 const HomePage: React.FC = () => {
   return (
