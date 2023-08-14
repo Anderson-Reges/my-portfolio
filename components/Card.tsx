@@ -3,7 +3,7 @@
 import ICard from "@/interfaces/Card";
 import IProjectDetails from "@/interfaces/ProjectDetails";
 import { Octokit } from "@octokit/core";
-import { BiTime } from 'react-icons/bi'
+import { BiTime, BiLink } from 'react-icons/bi'
 import React from 'react';
 import Link from "next/link";
 import { Tooltip } from 'flowbite-react';
@@ -32,7 +32,8 @@ const Card: React.FC<ICard> = ({ name }) => {
       topics: data.topics,
       updated_at: `${updatedDate.getMonth()}/${updatedDate.getDay()}/${updatedDate.getFullYear()}`,
       created_at: `${createdDate.getMonth()}/${createdDate.getDay()}/${createdDate.getFullYear()}`,
-      url: data.html_url
+      repo_url: data.html_url,
+      deploy_url: data.homepage
     })
   };
 
@@ -54,7 +55,7 @@ const Card: React.FC<ICard> = ({ name }) => {
             <p className="text-xs">{(projectDetails.size / 1024).toFixed(2) + "MB"}</p>
           </div>
           <div className="flex items-center">
-            <Link href={`${projectDetails.url}`}>
+            <Link href={`${projectDetails.repo_url}`}>
               <FaGithub className='transition text-second hover:text-third hover:scale-110' size="32px" />
             </Link>
           </div>
@@ -70,6 +71,18 @@ const Card: React.FC<ICard> = ({ name }) => {
             <p className="bg-[#27aa7a] text-xs w-[5em] text-center rounded">{stack}</p>
           ))}
         </div>
+        {
+          projectDetails.deploy_url && (
+            <div className="flex items-center gap-2">
+              <BiLink size="28px" />
+              <p className="text-second text-sm underline">
+                <Link href={`${projectDetails.deploy_url}`} className="hover:text-blue-600">
+                  {projectDetails.deploy_url}
+                </Link>
+              </p>
+            </div>
+          )
+        }
       </div>
     </div>
   );

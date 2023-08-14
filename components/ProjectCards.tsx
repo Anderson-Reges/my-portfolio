@@ -29,6 +29,15 @@ const ProjectCards: React.FC = () => {
       <Card
         name="initialization-script"
       />
+      <Card
+        name="trybetunes"
+      />
+      <Card
+        name="car-shop-mongo"
+      />
+      <Card
+        name="trybers-and-dragons"
+      />
     </div>
   );
 }

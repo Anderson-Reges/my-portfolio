@@ -4,5 +4,6 @@ export default interface IProjectDetails {
   topics?: Array<string>,
   updated_at: string,
   created_at: string,
-  url: string,
+  repo_url: string,
+  deploy_url: string | null,
 }
