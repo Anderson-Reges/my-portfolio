@@ -27,9 +27,6 @@ const NavBar: React.FC = () => {
         <Link href="/resume">
           <li className='transition hover:text-third hover:scale-105'>Resume</li>
         </Link>
-        <Link href="/contact">
-          <li className='transition hover:text-third hover:scale-105'>Contact</li>
-        </Link>
       </ul>
     </div>
   );
