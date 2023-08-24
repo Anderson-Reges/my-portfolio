@@ -16,19 +16,31 @@ const DiscordHover: React.FC = () => {
 
   return (
     <div className='flex flex-col items-center'>
-      <IoLogoDiscord
-        className={`transition text-second hover:text-third hover:scale-110`} 
-        size="32px"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      />
-      {
-        hover && (
-          <div style={{ position: 'absolute', bottom: '145px' }} className='animate-slide'>
-            <p className='transition text-third text-[12px]'>dot.reges</p>
-          </div>
-        )
-      }
+      <div className='group desktop:flex mobile:hidden flex-col items-center'>
+        <IoLogoDiscord
+          className={`transition text-second group-hover:text-third group-hover:scale-110 w-[50px]`}
+          size="40px"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
+        {
+          hover && (
+            <div>
+              <p className='transition group-hover:text-third group-hover:scale-110 text-[12px]'>dot.reges</p>
+            </div>
+          )
+        }
+      </div>
+      <div className='group desktop:hidden mobile:flex flex-col items-center'>
+        <IoLogoDiscord
+          className={`transition text-second group-hover:text-third group-hover:scale-110`}
+          size="40px"
+        />
+        <div>
+          <p className='transition group-hover:text-third group-hover:scale-110 text-second text-[12px]'>dot.reges</p>
+        </div>
+      </div>
+
     </div>
   );
 }

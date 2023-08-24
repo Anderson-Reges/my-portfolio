@@ -13,9 +13,9 @@ const inter = EB_Garamond({
 
 const NavBar: React.FC = () => {
   const { isOpen, setIsOpen } = React.useContext(MenuContext);
-  console.log(isOpen)
+
   return (
-    <div className='flex bg-primary justify-around desktop:py-[1.2em] mobile:py-[1.3em]'>
+    <div className='flex bg-primary justify-around desktop:py-[1.2em] mobile:pb-[1.3em] mobile:pt-[2.2em]'>
       <NavigationMob isOpen={ isOpen } setIsOpen={ setIsOpen } />
       <h1 className={`text-4xl ${inter.className} desktop:w-[50%] text-center text-second`}>
         <Link href="/" className='hover:text-third transition'>
