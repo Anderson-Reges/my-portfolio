@@ -1,5 +1,4 @@
 import Card from "./Card";
-import seaImg from '@/public/Sea_dot_page.png';
 import React from 'react';
 
 const ProjectCards: React.FC = () => {

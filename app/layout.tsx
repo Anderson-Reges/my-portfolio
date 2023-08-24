@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Lato } from 'next/font/google'
 import './globals.css'
 import BuyMeACoffe from '@/components/BuyMeACoffe';
+import MenuProvider from '@/context/MenuProvider';
 
 const inter = Lato({
   subsets: ['latin'],
@@ -21,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
+        <MenuProvider>
+          {children}
+        </MenuProvider>
         <BuyMeACoffe />
       </body>
     </html>
