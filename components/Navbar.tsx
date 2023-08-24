@@ -13,7 +13,7 @@ const inter = EB_Garamond({
 
 const NavBar: React.FC = () => {
   const { isOpen, setIsOpen } = React.useContext(MenuContext);
-
+  console.log(isOpen)
   return (
     <div className='flex bg-primary justify-around desktop:py-[1.2em] mobile:py-[1.3em]'>
       <NavigationMob isOpen={ isOpen } setIsOpen={ setIsOpen } />
@@ -37,11 +37,11 @@ const NavBar: React.FC = () => {
         </Link>
         <li>
           <div className="flex justify-end items-center desktop:hidden">
-            <div className="z-50 relative w-8 h-6 cursor-pointer flex-col justify-between items-center flex" onClick={() => {
+            <div className="group z-50 relative w-8 h-6 cursor-pointer flex-col justify-between items-center flex" onClick={() => {
               setIsOpen(!isOpen)
             }}>
               <span className={`h-1 w-full bg-second rounded-lg cursor-pointer transform transition duration-300 ease-in-out ${isOpen ? "rotate-45 translate-y-2.5" : ""}`} />
-              <span className={`h-1 w-full bg-second rounded-lg cursor-pointer transition-all duration-300 ease-in-out ${isOpen ? "w-[0px]" : "w-full"}`} />
+              <span className={`h-1 w-full bg-second rounded-lg cursor-pointer transition-all duration-300 ease-in-out ${isOpen ? "hidden" : "w-full"}`} />
               <span className={`h-1 w-full bg-second rounded-lg cursor-pointer transform transition duration-300 ease-in-out ${isOpen ? "-rotate-45 -translate-y-2.5" : ""}`} />
             </div>
           </div>
