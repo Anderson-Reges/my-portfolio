@@ -11,7 +11,7 @@ export interface menuProvider {
 }
 
 const MenuProvider: React.FC<IChildren> = ({ children }) => {
-  const [isOpen, setIsOpen] = React.useState<boolean>(true);
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
   
   const contextValue = React.useMemo(() => ({
     isOpen,
