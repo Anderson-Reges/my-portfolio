@@ -6,7 +6,7 @@ import MenuProvider from '@/context/MenuProvider';
 
 const inter = Lato({
   subsets: ['latin'],
-  weight: ['400'],
+  weight: ['400', '700'],
 });
 
 export const metadata: Metadata = {

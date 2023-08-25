@@ -3,7 +3,7 @@ import React from 'react';
 
 const ProjectCards: React.FC = () => {
   return (
-    <div className="relative inline-grid grid-cols-3 gap-[2em] mx-[5em]">
+    <div className="relative inline-grid grid-cols-3 gap-[2em] mx-[5em] mb-[20px]">
       <Card
         name="landing-page-product"
       />

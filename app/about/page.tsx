@@ -1,4 +1,4 @@
-import NavBar from "../../components/Footer";
+import NavBar from "../../components/Navbar";
 import {
   BiLogoGit, BiLogoTypescript, BiLogoCss3, BiLogoTailwindCss, BiLogoReact, BiLogoPython
 } from 'react-icons/bi';

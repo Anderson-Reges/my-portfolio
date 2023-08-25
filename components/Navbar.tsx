@@ -3,37 +3,32 @@
 import Link from 'next/link';
 import React from 'react';
 import { MenuContext } from '@/context/MenuProvider';
-import { EB_Garamond } from 'next/font/google';
 import NavigationMob from './NavigationMob';
 
-const inter = EB_Garamond({
-  subsets: ['latin'],
-  weight: ['400']
-});
 
 const NavBar: React.FC = () => {
   const { isOpen, setIsOpen } = React.useContext(MenuContext);
 
   return (
-    <div className='flex bg-primary justify-around desktop:py-[1.2em] mobile:pb-[1.3em] mobile:pt-[2.2em]'>
+    <div className='flex bg-primary justify-around desktop:py-[2em] mobile:py-[2em] grow'>
       <NavigationMob isOpen={ isOpen } setIsOpen={ setIsOpen } />
-      <h1 className={`text-4xl ${inter.className} desktop:w-[50%] text-center text-second`}>
+      <h1 className={`text-lg desktop:w-[50%] text-center text-second font-bold mobile:text-[16px]`}>
         <Link href="/" className='hover:text-third transition'>
-          A.R
+          ANDERSON REGES
         </Link>
       </h1>
       <ul
-        className='flex gap-[3em] items-center desktop:w-[50%] justify-center
-        font-bold text-second '
+        className='flex gap-[3em] desktop:w-[50%] justify-center
+        font-bold text-second items-start'
       >
-        <Link href="/about">
-          <li className='transition hover:text-third hover:scale-105 mobile:hidden desktop:flex'>About</li>
+        <Link href="/about" className='mobile:hidden desktop:flex'>
+          <li className='transition hover:text-third hover:scale-105 desktop:flex'>About</li>
         </Link>
-        <Link href="/projects">
-          <li className='transition hover:text-third hover:scale-105 mobile:hidden desktop:flex'>Projects</li>
+        <Link href="/projects" className='mobile:hidden desktop:flex'>
+          <li className='transition hover:text-third hover:scale-105 desktop:flex'>Projects</li>
         </Link>
-        <Link href="/resume">
-          <li className='transition hover:text-third hover:scale-105 mobile:hidden desktop:flex'>Resume</li>
+        <Link href="/resume" className='mobile:hidden desktop:flex'>
+          <li className='transition hover:text-third hover:scale-105 desktop:flex'>Resume</li>
         </Link>
         <li>
           <div className="flex justify-end items-center desktop:hidden">
