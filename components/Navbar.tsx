@@ -11,7 +11,7 @@ const NavBar: React.FC = () => {
 
   return (
     <div className='flex bg-primary justify-around desktop:py-[2em] mobile:py-[2em] grow'>
-      <NavigationMob isOpen={ isOpen } setIsOpen={ setIsOpen } />
+      <NavigationMob isOpen={isOpen} setIsOpen={setIsOpen} />
       <h1 className={`text-lg desktop:w-[50%] text-center text-second font-bold mobile:text-[16px]`}>
         <Link href="/" className='hover:text-third transition'>
           ANDERSON REGES
@@ -30,17 +30,19 @@ const NavBar: React.FC = () => {
         <Link href="/resume" className='mobile:hidden desktop:flex'>
           <li className='transition hover:text-third hover:scale-105 desktop:flex'>Resume</li>
         </Link>
-        <li>
-          <div className="flex justify-end items-center desktop:hidden">
-            <div className="group z-50 relative w-8 h-6 cursor-pointer flex-col justify-between items-center flex" onClick={() => {
-              setIsOpen(!isOpen)
-            }}>
-              <span className={`h-1 w-full bg-second rounded-lg cursor-pointer transform transition duration-300 ease-in-out ${isOpen ? "rotate-45 translate-y-2.5" : ""}`} />
-              <span className={`h-1 w-full bg-second rounded-lg cursor-pointer transition-all duration-300 ease-in-out ${isOpen ? "hidden" : "w-full"}`} />
-              <span className={`h-1 w-full bg-second rounded-lg cursor-pointer transform transition duration-300 ease-in-out ${isOpen ? "-rotate-45 -translate-y-2.5" : ""}`} />
-            </div>
-          </div>
-        </li>
+        <div
+          className={`group z-50 w-8 h-6 cursor-pointer
+          flex-col justify-between items-center flex
+          "relative" ${isOpen ? "fixed" : "absolute"} desktop:hidden`}
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          <span className={`h-1 w-full bg-second rounded-lg cursor-pointer transform transition duration-300 ease-in-out ${isOpen ? "rotate-45 translate-y-2.5" : ""}`} />
+          <span className={`h-1 w-full bg-second rounded-lg cursor-pointer transition-all duration-300 ease-in-out ${isOpen ? "hidden" : "w-full"}`} />
+          <span className={`h-1 w-full bg-second rounded-lg cursor-pointer transform transition duration-300 ease-in-out ${isOpen ? "-rotate-45 -translate-y-2.5" : ""}`} />
+        </div>
+
       </ul>
     </div>
   );

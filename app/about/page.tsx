@@ -22,7 +22,7 @@ const about: React.FC = () => {
         className="mt-[16px]"
       >
         <section
-          className="mx-[225px] pl-[2rem] pr-[2rem]"
+          className="desktop:mx-[225px] laptop:mx-[225px] px-[2rem]"
         >
           <article>
             <header>
@@ -46,7 +46,7 @@ const about: React.FC = () => {
               process. I have 1 year and 4 months of practical experience in software development and with some projects on Github.
             </p>
             <h1 className="text-second text-4xl font-bold mt-[64px] mb-[32px]">Stuff I Work On</h1>
-            <div className="inline-grid grid-cols-7 gap-[2em] w-full">
+            <div className="inline-grid desktop:grid-cols-7 laptop:grid-cols-7 mobile:grid-cols-4 gap-[2em] w-full">
               <div className="flex flex-col items-center gap-[0.5em]">
                 <BiLogoGit className='transition text-second hover:text-third hover:scale-110' size="45px" />
                 <p className="text-second">Git</p>
