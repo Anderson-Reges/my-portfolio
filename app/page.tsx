@@ -10,7 +10,10 @@ import Footer from "../components/Footer";
 
 const HomePage: React.FC = () => {
   return (
-    <main className="flex flex-col bg-primary h-screen mobile:h-screen">
+    <main
+      className="flex flex-col bg-primary desktop:landscape:h-screen
+      mobile:h-screen mobile:landscape:h-full laptop:landscape:h-screen"
+    >
       <NavBar />
       <div className="flex flex-col items-center box-content mt-[16px] mb-[32px] px-5 grow">
         <Image
@@ -18,8 +21,16 @@ const HomePage: React.FC = () => {
           alt="profile-picture"
           className="rounded-full mobile:w-[100px] desktop:w-[200px]"
         />
-        <h1 className="text-second font-bold desktop:text-3xl mobile:text-2xl mt-[20px] mb-[5px]">Anderson Reges</h1>
-        <h1 className="text-second font-bold desktop:text-2xl mobile:text-xl mobile:text-center mt-[10px] mb-[5px]">Full Stack Web Developer and Technology Enthusiast</h1>
+        <h1
+          className="text-second font-bold desktop:text-3xl mobile:text-2xl mt-[20px] mb-[5px]"
+        >
+          Anderson Reges
+        </h1>
+        <h1
+          className="text-second font-bold desktop:text-2xl mobile:text-xl mobile:text-center mt-[10px] mb-[5px]"
+        >
+          Full Stack Web Developer and Technology Enthusiast
+        </h1>
         <ul
           className="flex mobile:flex-wrap desktop:gap-[2.3em] h-[48px]
           desktop:w-[40%] justify-center mobile:gap-[1.2em] mobile:w-full
