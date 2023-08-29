@@ -12,7 +12,7 @@ import {
   SiMysql, SiMongodb, SiJest, SiPytest, SiMocha,
   SiTestinglibrary
 } from 'react-icons/si';
-import Footer from "@/components/Footer";
+import Footer from "@/components/footer";
 
 const about: React.FC = () => {
   return (

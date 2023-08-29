@@ -1,4 +1,4 @@
-import Footer from "../../components/Footer";
+import Footer from "../../components/footer";
 import NavBar from "@/components/Navbar";
 import ProjectCards from "@/components/ProjectCards";
 
