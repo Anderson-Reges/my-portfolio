@@ -6,7 +6,7 @@ const ProjectCards: React.FC = () => {
     <div
       className="relative inline-grid desktop:grid-cols-3 mobile:grid-cols-1
       gap-[2em] desktop:mx-[5em] mb-[20px] mobile:landscape:grid-cols-2
-      desktop:landscape:grid-cols-3"
+      desktop:landscape:grid-cols-3 mobile:w-full desktop:w-11/12"
     >
       <Card
         name="landing-page-product"

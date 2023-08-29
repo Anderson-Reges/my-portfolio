@@ -12,13 +12,15 @@ const projects: React.FC = () => {
         <section
           className="desktop:mx-[100px] laptop:mx-[100px] px-[2em]"
         >
-          <article>
-            <header className="desktop:mx-[225px]">
-              <h1 className="text-4xl font-bold">Projects</h1>
-            </header>
-            <p className="text-lg my-[1.112em] desktop:mx-[225px]">
-              These are some projects that I developed or are still developing.
-            </p>
+          <article className="mobile:w-full flex flex-col items-center">
+            <div>
+              <header className="desktop:mx-[225px]">
+                <h1 className="text-4xl font-bold">Projects</h1>
+              </header>
+              <p className="text-lg my-[1.112em] desktop:mx-[225px]">
+                These are some projects that I developed or are still developing.
+              </p>
+            </div>
             <ProjectCards />
           </article>
         </section>
