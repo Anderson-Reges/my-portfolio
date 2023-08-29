@@ -11,7 +11,7 @@ export default function ProjectsLayout({
   children: React.ReactNode
 }) {
   return (
-    <main className='flex flex-col text-second bg-primary h-screen justify-between'>
+    <main className='flex flex-col text-second bg-primary h-screen justify-between landscape:h-full'>
       {children}
     </main>
   )
