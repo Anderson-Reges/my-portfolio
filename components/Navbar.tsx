@@ -21,19 +21,19 @@ const NavBar: React.FC = () => {
         className='flex gap-[3em] desktop:w-[50%] justify-center
         font-bold text-second items-start'
       >
-        <Link href="/about" className='mobile:hidden desktop:flex'>
+        <Link href="/about" className='mobile:hidden tablet:flex laptop:flex desktop:flex'>
           <li className='transition hover:text-third hover:scale-105 desktop:flex'>About</li>
         </Link>
-        <Link href="/projects" className='mobile:hidden desktop:flex'>
+        <Link href="/projects" className='mobile:hidden tablet:flex laptop:flex desktop:flex'>
           <li className='transition hover:text-third hover:scale-105 desktop:flex'>Projects</li>
         </Link>
-        <Link href="/resume" className='mobile:hidden desktop:flex'>
+        <Link href="/resume" className='mobile:hidden tablet:flex laptop:flex desktop:flex'>
           <li className='transition hover:text-third hover:scale-105 desktop:flex'>Resume</li>
         </Link>
         <div
           className={`group z-50 w-8 h-6 cursor-pointer
           flex-col justify-between items-center flex
-          "relative" ${isOpen ? "fixed" : "absolute"} desktop:hidden`}
+          "relative" ${isOpen ? "fixed" : "absolute"} desktop:hidden laptop:hidden tablet:hidden`}
           onClick={() => {
             setIsOpen(!isOpen);
           }}
