@@ -45,8 +45,8 @@ const Card: React.FC<ICard> = ({ name }) => {
     <div 
       className="
       flex gap-[1em] border px-[1em] py-[1em] w-[19em]
-      rounded-lg hover:scale-105 transition hover:border-third
-      h-[200px]"
+      rounded-lg desktop:hover:scale-105 transition desktop:hover:border-third
+      h-[200px] mobile:w-full"
     >
       <div className="flex flex-col gap-[.5em] w-full">
         <div className="flex justify-between">

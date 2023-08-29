@@ -1,10 +1,13 @@
 import Card from "./Card";
-import seaImg from '@/public/Sea_dot_page.png';
 import React from 'react';
 
 const ProjectCards: React.FC = () => {
   return (
-    <div className="relative inline-grid grid-cols-3 gap-[2em] mx-[5em]">
+    <div
+      className="relative inline-grid desktop:grid-cols-3 mobile:grid-cols-1
+      gap-[2em] desktop:mx-[5em] mb-[20px] mobile:landscape:grid-cols-2
+      desktop:landscape:grid-cols-3"
+    >
       <Card
         name="landing-page-product"
       />

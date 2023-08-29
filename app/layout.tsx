@@ -2,10 +2,11 @@ import type { Metadata } from 'next'
 import { Lato } from 'next/font/google'
 import './globals.css'
 import BuyMeACoffe from '@/components/BuyMeACoffe';
+import MenuProvider from '@/context/MenuProvider';
 
 const inter = Lato({
   subsets: ['latin'],
-  weight: ['400'],
+  weight: ['400', '700'],
 });
 
 export const metadata: Metadata = {
@@ -20,8 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {children}
+      <body className={`${inter.className}`}>
+        <MenuProvider>
+          {children}
+        </MenuProvider>
         <BuyMeACoffe />
       </body>
     </html>
