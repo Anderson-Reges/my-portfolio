@@ -21,7 +21,7 @@ const resume: React.FC = () => {
               <h1 className="text-4xl font-bold">Resume</h1>
             </header>
             <p className="text-second text-lg my-[1.112em]">
-              I still don't have professional experience as a developer, but I'm open to new opportunities. if you found my profile interesting, don't be shy, send me a message.
+            I have experience as a freelancer, and I am open to new opportunities. If you found my profile interesting, don't be shy, send me a message.
             </p>
             <h1 className="text-second text-3xl font-bold mt-[64px] mb-[32px]">Experiences</h1>
             <table className="text-second border-2 border-second landscape:mb-[30px]">
