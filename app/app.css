@@ -1,0 +1,532 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * Design tokens — terminal portfolio (Claude Design handoff)
+ * Default = light "ubuntu" palette; dark is an opt-in override.
+ * Colors are Tailwind v4 theme tokens (utilities: bg-bg, text-ink,
+ * text-ac, text-mut, border-faint, text-ok …) AND the variables the
+ * bespoke terminal CSS below reads, so a single source drives both.
+ * ------------------------------------------------------------------ */
+@theme {
+  /* light / "ubuntu" terminal — the default theme */
+  --color-bg: #300a24;
+  --color-ink: #eeeeec;
+  --color-mut: #a890a1;
+  --color-faint: #5c3b50;
+  --color-ac: #7fd93c;
+  --color-ok: #7fd93c;
+
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+:root {
+  /* prompt + motion variables resolved against the active palette */
+  --p-user: #7fd93c;
+  --p-path: #eeeeec;
+  --p-sign: #eeeeec;
+  --cur: #eeeeec;
+  --vig: 0.4;
+  --col: 720px;
+  --speed: 1; /* motion multiplier */
+}
+
+/* dark theme — near-black blue base, teal accent */
+body[data-theme="dark"] {
+  --color-bg: #0a0c0f;
+  --color-ink: #dfe5ec;
+  /* #697483 (spec) is 4.13:1 on the dark bg — nudged to clear WCAG AA (5.44:1)
+     since --mut carries real prose (tagline, about, kv keys). */
+  --color-mut: #7d8896;
+  --color-faint: #2a313b;
+  --color-ac: #4fe0d4;
+  --color-ok: #7ed79b;
+
+  --p-user: var(--color-ac);
+  --p-path: var(--color-mut);
+  --p-sign: var(--color-mut);
+  --cur: var(--color-ac);
+  --vig: 0.55;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Dark canvas behind everything so the mobile address-bar show/hide and
+       overscroll never flash a light strip at the top/bottom. */
+    background: var(--color-bg);
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: 0.2px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    transition: background-color 0.45s ease, color 0.45s ease;
+  }
+
+  :where(body *) {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  }
+
+  /* faint top vignette, barely there */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* Cover the LARGEST viewport (toolbar hidden) so the mobile address bar
+       showing/hiding can never reveal an uncovered strip at the bottom. */
+    height: 100vh; /* fallback for browsers without lvh */
+    height: 100lvh;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+      130% 90% at 50% -10%,
+      transparent 62%,
+      rgba(0, 0, 0, var(--vig))
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* ── fixed chrome ───────────────────────────── */
+  .brand {
+    position: fixed;
+    top: 30px;
+    left: 38px;
+    z-index: 30;
+    font-size: 12.5px;
+    color: var(--color-mut);
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+  }
+  .brand .ac {
+    color: var(--color-ac);
+  }
+
+  .ctl {
+    position: fixed;
+    top: 26px;
+    right: 38px;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 7px;
+  }
+  .seg {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    font-size: 11.5px;
+    letter-spacing: 1px;
+  }
+  .seg button {
+    background: none;
+    border: none;
+    font: inherit;
+    color: var(--color-faint);
+    cursor: pointer;
+    padding: 3px 7px;
+    transition: color 0.2s;
+  }
+  .seg button:hover {
+    color: var(--color-ink);
+  }
+  .seg button.on {
+    color: var(--color-ac);
+  }
+  .seg .d {
+    color: var(--color-faint);
+  }
+
+  .nav {
+    position: fixed;
+    top: 50%;
+    right: 38px;
+    transform: translateY(-50%);
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-end;
+  }
+  .nav a {
+    font-size: 11.5px;
+    letter-spacing: 1.5px;
+    color: var(--color-faint);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.25s;
+  }
+  .nav a .ix {
+    font-size: 10px;
+    opacity: 0.8;
+  }
+  .nav a .ln {
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.25s;
+  }
+  .nav a:hover {
+    color: var(--color-ink);
+  }
+  .nav a.active {
+    color: var(--color-ac);
+  }
+  .nav a.active .ln {
+    width: 20px;
+  }
+
+  .hint {
+    position: fixed;
+    bottom: 30px;
+    left: 38px;
+    z-index: 30;
+    color: var(--color-mut);
+    font-size: 11.5px;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    transition: opacity 0.5s;
+  }
+  .hint.gone {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .hint .ch {
+    display: inline-block;
+    animation: dn 1.7s ease-in-out infinite;
+  }
+  @keyframes dn {
+    50% {
+      transform: translateY(4px);
+    }
+  }
+
+  /* ── session blocks ─────────────────────────── */
+  main {
+    position: relative;
+    z-index: 1;
+  }
+  .blk {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 38px;
+    max-width: calc(var(--col) + 76px);
+    margin: 0 auto;
+  }
+
+  .prompt {
+    color: var(--color-mut);
+    font-size: clamp(11px, 3.3vw, 14.5px);
+    margin-bottom: 30px;
+    white-space: nowrap;
+  }
+  .prompt .user {
+    color: var(--p-user);
+  }
+  .prompt .sep {
+    color: var(--color-ink);
+  }
+  .prompt .path {
+    color: var(--p-path);
+  }
+  .prompt .sign {
+    color: var(--p-sign);
+    margin: 0 9px 0 1px;
+  }
+  .prompt .cmd {
+    color: var(--color-ink);
+  }
+  .cur {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: var(--cur);
+    vertical-align: -3px;
+    margin-left: 1px;
+    opacity: 0;
+  }
+  .cur.on {
+    animation: bl 1.1s steps(1) infinite;
+  }
+  @keyframes bl {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .ln {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .show .ln {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* hero */
+  .name {
+    font-size: clamp(42px, 8.5vw, 88px);
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -2px;
+    color: var(--color-ink);
+    margin: 2px 0 20px;
+  }
+  .name .blink {
+    color: var(--color-ac);
+    font-weight: 400;
+    animation: bl 1.1s steps(1) infinite;
+  }
+  .tagline {
+    font-size: clamp(15px, 2.3vw, 21px);
+    color: var(--color-mut);
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    color: var(--color-ok);
+    font-size: 13.5px;
+    margin-top: 30px;
+    white-space: nowrap;
+  }
+  .status .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-ok);
+    box-shadow: 0 0 0 0 rgba(126, 215, 155, 0.5);
+    animation: pls 2.1s infinite;
+  }
+  @keyframes pls {
+    70% {
+      box-shadow: 0 0 0 8px rgba(126, 215, 155, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(126, 215, 155, 0);
+    }
+  }
+
+  /* key / value rows (stack, contact) */
+  .kv {
+    display: grid;
+    grid-template-columns: clamp(92px, 26vw, 152px) 1fr;
+    gap: 13px 22px;
+    font-size: 15px;
+  }
+  /* vertical rhythm between stacked key/value rows */
+  .kv + .kv {
+    margin-top: 13px;
+  }
+  .kv .k {
+    color: var(--color-mut);
+  }
+  .kv .v {
+    color: var(--color-ink);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+  }
+  .kv .v i {
+    font-style: normal;
+    white-space: nowrap;
+    transition: color 0.18s;
+  }
+  .kv .v i:hover {
+    color: var(--color-ac);
+  }
+  .kv a {
+    color: var(--color-ink);
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+  .kv a:hover {
+    color: var(--color-ac);
+  }
+  .kv a .ar {
+    color: var(--color-mut);
+    margin-left: 8px;
+    transition: 0.2s;
+  }
+  .kv a:hover .ar {
+    color: var(--color-ac);
+    margin-left: 12px;
+  }
+
+  /* projects */
+  .proj {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+  }
+  .proj a {
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    align-items: baseline;
+    gap: 22px;
+    padding: 20px 6px 20px 0;
+    text-decoration: none;
+    color: var(--color-ink);
+    border-top: 1px solid var(--color-faint);
+    transition: padding 0.25s ease, color 0.2s;
+  }
+  .proj a:last-child {
+    border-bottom: 1px solid var(--color-faint);
+  }
+  .proj a .no {
+    color: var(--color-ac);
+    font-size: 12.5px;
+  }
+  .proj a .nm {
+    font-size: 18px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .proj a .nm .ar {
+    color: var(--color-faint);
+    transition: 0.25s;
+  }
+  .proj a .tech {
+    color: var(--color-mut);
+    font-size: 12.5px;
+    justify-self: end;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .proj a:hover {
+    padding-left: 16px;
+  }
+  .proj a:hover .nm .ar {
+    color: var(--color-ac);
+    transform: translateX(5px);
+  }
+
+  .para {
+    color: var(--color-mut);
+    font-size: 15.5px;
+    line-height: 1.85;
+    max-width: 60ch;
+  }
+  .para + .para {
+    margin-top: 18px;
+  }
+  .para b {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+
+  /* ready / footer */
+  .ready {
+    min-height: 62vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 38px;
+    max-width: calc(var(--col) + 76px);
+    margin: 0 auto;
+  }
+  .ready .prompt {
+    margin-bottom: 0;
+  }
+  .copy {
+    color: var(--color-faint);
+    font-size: 11.5px;
+    margin-top: 46px;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* hide the right-side index well before it can overlap the centered column */
+@media (max-width: 1120px) {
+  .nav {
+    display: none;
+  }
+}
+@media (max-width: 720px) {
+  .nav {
+    display: none;
+  }
+  .brand {
+    left: 22px;
+    top: 22px;
+  }
+  .hint {
+    left: 22px;
+    bottom: 22px;
+  }
+  .ctl {
+    right: 22px;
+    top: 18px;
+  }
+  .blk,
+  .ready {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  .blk {
+    padding-top: 104px;
+    padding-bottom: 104px;
+  }
+  .prompt {
+    margin-bottom: 22px;
+  }
+  .kv {
+    gap: 12px 16px;
+  }
+  .proj a {
+    grid-template-columns: 30px 1fr;
+    gap: 16px;
+  }
+  .proj a .tech {
+    display: none;
+  }
+  .proj a .nm {
+    font-size: 16px;
+  }
+}
+@media (max-width: 430px) {
+  .seg {
+    font-size: 11px;
+  }
+  .brand {
+    font-size: 11px;
+  }
+  .tagline {
+    font-size: 15px;
+  }
+  .para {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .status {
+    font-size: 12.5px;
+  }
+  .kv {
+    font-size: 13.5px;
+  }
+}

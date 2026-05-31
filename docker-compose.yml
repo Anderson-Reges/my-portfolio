@@ -1,0 +1,32 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: anderson-portfolio
+    container_name: portifolio
+    restart: unless-stopped
+    networks:
+      - web
+    expose:
+      - "80"
+    sysctls:
+      - net.ipv4.ip_unprivileged_port_start=80
+    environment:
+      NODE_ENV: production
+      PORT: 80
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1/favicon.svg').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+networks:
+  web:
+    external: true

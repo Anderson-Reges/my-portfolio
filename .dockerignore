@@ -1,0 +1,23 @@
+node_modules
+build
+.react-router
+.git
+.gitignore
+.github
+Dockerfile
+docker-compose.yml
+.dockerignore
+README.md
+.vscode
+.idea
+coverage
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+*.tsbuildinfo
+# never bake secrets into the image (token is passed at runtime)
+.env
+.env.*
+!.env.example

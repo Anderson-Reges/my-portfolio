@@ -112,3 +112,22 @@ Color tokens are also Tailwind utilities (`bg-bg`, `text-ink`, `text-ac`, …).
 host. On Vercel, add the [`@vercel/react-router`](https://reactrouter.com/start/framework/deploying)
 preset and set `GITHUB_TOKEN` in the project env — it stays server-side. (SSR
 needs a Node runtime, so this is no longer a pure-static deploy.)
+
+## Docker
+
+Multi-stage `Dockerfile` (build → production-only runtime) + `docker-compose.yml`
+(container `portifolio`, listening on port **80** on the compose network).
+
+```bash
+docker compose up --build       # build + run; exposed on the network as portifolio:80
+```
+
+- The app listens on port **80** inside the container and is `expose`d on the
+  compose network (e.g. for a reverse proxy), **not published to the host**. To
+  open it from the host, add a `ports:` mapping (a commented example is in the
+  compose), e.g. `- "8080:80"`, then browse http://localhost:8080.
+- Port 80 is privileged and the image runs as a non-root user, so the compose
+  sets `net.ipv4.ip_unprivileged_port_start=80` to allow the bind.
+- `GITHUB_TOKEN` is optional and **server-side only** — put it in a local `.env`
+  file next to the compose (substituted in, never baked into the image).
+- Standalone (defaults to port 3000): `docker build -t anderson-portfolio . && docker run -p 3000:3000 -e GITHUB_TOKEN=… anderson-portfolio`.
