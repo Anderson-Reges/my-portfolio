@@ -102,6 +102,21 @@ body[data-theme="dark"] {
 
 @layer components {
   /* ── fixed chrome ───────────────────────────── */
+  /* Soft fade at the very top so content scrolling under the fixed
+     brand/controls dissolves into the background instead of clashing. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 88px;
+    z-index: 20;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      var(--color-bg) 28%,
+      transparent 100%
+    );
+  }
   .brand {
     position: fixed;
     top: 30px;
@@ -229,7 +244,10 @@ body[data-theme="dark"] {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* `safe` keeps content centered when it fits, but anchors it to the top
+       (respecting padding-top) when it's taller than the viewport — so long
+       sections never slide up under the fixed brand/controls. */
+    justify-content: safe center;
     padding: 140px 38px;
     max-width: calc(var(--col) + 76px);
     margin: 0 auto;
@@ -385,7 +403,7 @@ body[data-theme="dark"] {
   }
   .proj a {
     display: grid;
-    grid-template-columns: 36px 1fr auto;
+    grid-template-columns: 36px 1fr minmax(0, auto);
     align-items: baseline;
     gap: 22px;
     padding: 20px 6px 20px 0;
@@ -416,7 +434,8 @@ body[data-theme="dark"] {
     font-size: 12.5px;
     justify-self: end;
     text-align: right;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
   .proj a:hover {
     padding-left: 16px;
